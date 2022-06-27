@@ -51,12 +51,14 @@
 
   onMount(() => {
     if ($flat.filter(({ checked }) => checked).length === 0) {
-      const item = $flat.filter((_) => _.value === value)[0] || $flat[0];
-
-      items.update((_) => {
-        _[item.id].checked = true;
-        return _;
-      });
+      const item = $flat.filter((_) => _.value === value)[0] //|| $flat[0];
+      
+      if(item) {
+        items.update((_) => {
+          _[item.id].checked = true;
+          return _;
+        });
+      }
     }
   });
 
